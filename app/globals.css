@@ -2,32 +2,107 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+/* Remove default margin */
+*{
+  margin: 0;
+  padding: 0;
+  font: inherit;
 }
 
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul,
+ol{
+  list-style: none;
+}
+
+/* Set core root defaults */
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+html,
+body{
+    margin: auto;
+    height: 100%;
+}
+
+/* Set core body defaults */
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  color: var(--primary-clr);
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+   scroll-behavior: auto;
+  }
+  
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }
+
+:root{
+  --primary-clr: #000000;
+
+  --secondary-clr-1: #377DFF;
+  --secondary-clr-2: #38CB89;
+  --secondary-clr-3: #FFAB00;
+  --secondary-clr-4: #FF5630;
+
+  --neutral-clr-1: #141718;
+  --neutral-clr-2: #232627;
+  --neutral-clr-3: #343839;
+  --neutral-clr-4: #6C7275;
+  --neutral-clr-5: #E8ECEF;
+  --neutral-clr-6: #F3F5F7; 
+  --neutral-clr-7: #FEFEFE;
+  
+  
+}
+
+.BG-Gradient{
+  background: linear-gradient(27deg, rgba(255,171,0,1) 0%, rgba(255,203,97,1) 100%);
+}
+
+/* .swiper-pagination-color{
+  color: #6C7275"
+}
+.wiper-pagination-bullet-active{
+  background-color: #377DFF"
+}
+.swiper-pagination-bullet-inactive{
+  background-color: #6C7275"
+}
+.swiper-pagination-bullet-size{
+  color: #6C7275"
+}
+/* .swiper-pagination-bullet-horizontal-gap{
+  color: #6C7275"
+} */ 
