@@ -69,7 +69,7 @@ const NewsLetter = () => {
                         <input
                             className='border-none rounded-sm box-border 
                             outline-none ml-4 mr-auto bg-transparent focus 
-                            w-auto h-auto flex flex-row justify-between gap-2 '
+                            w-[22rem] h-auto flex flex-row justify-between gap-2 '
                             type="text"
                             placeholder='Email address'
                             value={emailAdress}

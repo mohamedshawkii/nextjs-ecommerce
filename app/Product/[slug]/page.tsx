@@ -1,4 +1,3 @@
-import MOreFeature from '@/app/components/MoreFeature';
 import { fullProduct } from '../../interface';
 import client from '@/lib/client';
 import Image from 'next/image';

@@ -3,13 +3,10 @@
 import React, { useEffect, useState } from 'react';
 import client from "@/lib/client";
 import Image from 'next/image';
-// Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
-// Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/free-mode';
 import 'swiper/css/pagination';
-// import required modules
 import { FreeMode, Pagination } from 'swiper/modules';
 import Link from 'next/link';
 import { simplifiedProduct } from '../interface';
@@ -57,7 +54,7 @@ function ProductsCarousel() {
               {products.map((item) => (
                 <SwiperSlide key={item._id}>
                   <div className='w-[16.5rem] h-[28.5rem] 
-                  flex flex-col justify-center items-center gap-2'>
+                  flex flex-col justify-center items-center gap-6'>
                     <div className='flex justify-center items-center w-full h-3/4 bg-[#F3F5F7]'>
                       <Image className='w-auto h-[10rem]' src={item.imageUrl} alt="product" height={500} width={500} />
                     </div>

@@ -7,6 +7,16 @@ const config: Config = {
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
+    extend: {
+      screens: {
+        'Xsm': '320px',
+        'Beforexl': '1150px',
+        'Afterxl': '1300px',
+        'BasePcScreen': '1440px',
+        'MidPcScreen': '1700px',
+        'WidePcScreen': '2050px',
+      },
+    }
   },
   plugins: [],
 };

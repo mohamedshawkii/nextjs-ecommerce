@@ -4,12 +4,12 @@ import { CiMenuFries, CiMenuBurger } from "react-icons/ci";
 import { useState } from "react";
 import Link from "next/link";
 
-import Logo from "../../public/svgs/Logo";
 import UserIcon from '../../public/svgs/UserIcon'
 import ShopingBag from '../../public/svgs/ShopingBag'
 import SearchIcon from '../../public/svgs/SearchIcon'
 import Copoun from "@/public/svgs/Copoun";
 import { CTAWithUnderLine } from "./CTAWithUnderLine";
+import LogoBlack from "@/public/svgs/LogoBlack";
 
 
 function NavBar() {
@@ -23,8 +23,8 @@ function NavBar() {
       href: "/Shop",
     },
     {
-      name: "Products",
-      href: "/Products",
+      name: "Product",
+      href: "/Product",
     },
     {
       name: "ContactUs",
@@ -113,7 +113,7 @@ function NavBar() {
             </div>
           </div>
         </div>
-        <Logo />
+        <LogoBlack />
         <div className="mx-auto flex flex-row">
           {NavLinks.map((item, index) => (
             <div

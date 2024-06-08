@@ -22,6 +22,7 @@ export default async function Header() {
                         width={800}
                         height={800}
                         className='w-auto h-[38rem]'
+                        priority
                     />
                 </div>
                 <div className='flex flex-col justify-start items-start gap-4 text-6xl mt-[10rem]'>

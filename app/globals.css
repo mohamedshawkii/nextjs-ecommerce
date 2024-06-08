@@ -91,6 +91,29 @@ picture {
   background: linear-gradient(27deg, rgba(255,171,0,1) 0%, rgba(255,203,97,1) 100%);
 }
 
+::-webkit-scrollbar{
+  width: 0.4rem;
+  height: 0.3rem;
+}
+::-webkit-scrollbar-corner{
+  background: none;
+}              
+::-webkit-scrollbar-track {
+  background: var(--neutral-clr-5);
+  border-radius: 100vw;
+  margin-block: 1em;
+}
+
+::-webkit-scrollbar-thumb {
+  cursor: pointer;
+  background: var(--neutral-clr-4);
+  border-radius: 100vw;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-clr);
+}
+
 /* .swiper-pagination-color{
   color: #6C7275"
 }
