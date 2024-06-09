@@ -5,6 +5,7 @@ import StoreAllProduct from '../components/StoreAllProduct'
 import SideBare from '../components/SideBare'
 import { ProductInterFace } from '../interface';
 import client from '@/lib/client';
+import { LuSettings2 } from 'react-icons/lu';
 
 const page = () => {
   const [productsData, setProductsData] = useState<ProductInterFace | null>(null);
@@ -140,14 +141,13 @@ const page = () => {
       (res) => {
         if (res) {
           const byPrice = res.filter(
-            (res: { category: string }) => res?.category.includes("Wireless") );
+            (res: { category: string }) => res?.category.includes("Wireless"));
           console.log(byPrice);
           setProductsData(byPrice);
         }
       }
     )
   }
-//.indexOf("Wireless")
   function earbudsCategory() {
     const query = `*[_type == "products"][]{
       _id,
@@ -196,8 +196,17 @@ const page = () => {
     <div className='px-[10rem] w-full h-auto' >
       <div className=' h-[24.5rem]'>
       </div>
-      <div className='flex flex-row py-[4rem] w-full h-auto'>
-        <div className='pr-[1.5rem]'>
+      <div className='flex flex-row justify-start items-start w-full font-bold text-xl'>
+        <div className=" flex flex-row justify-center items-center mb-[2rem] gap-8">
+          <LuSettings2 size={27} />
+          Filter
+        </div>
+        <div className=' ml-[12rem]'>
+          <h2>Our Products</h2>
+        </div>
+      </div>
+      <div className='flex flex-row w-full h-auto pb-[4rem]  '> 
+        <div className='pr-[2rem]'>
           <SideBare
             allPrices={allPrices}
             overthreeHundred={overthreeHundred}
