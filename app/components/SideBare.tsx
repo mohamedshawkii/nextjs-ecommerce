@@ -14,18 +14,15 @@ function SideBare({ allPrices,
     return (
         <aside>
             <div className=" w-[16.5rem] h-[31rem] overflow-scroll overflow-x-hidden bg-transparent text-lg text-[#000000] ">
-                <div className="flex flex-col justify-start items-start gap-6  w-full h-auto p-4 ">
-                    <div className=" flex flex-row justify-center items-center gap-8 font-bold">
-                        <LuSettings2 />
-                        Filter
-                    </div>
+                <div className="flex flex-col justify-start items-start gap-6  w-full h-auto ">
+                   
                     
                     <h2 className="font-bold">CATEGORIES</h2>
                     <button className="hover:font-bold" onClick={wirelessCategory}>Wireless</button>
                     <button className="hover:font-bold" onClick={earbudsCategory}>Earbuds</button>
                     <button className="hover:font-bold" onClick={headphoneCategory}>Headphone</button>
 
-                    <div className="my-[2rem]" />
+                    <div className="my-[1rem]" />
 
                     <h2 className="font-bold">PRICE</h2>
                     <button className="hover:font-bold" onClick={allPrices}>All prices</button>

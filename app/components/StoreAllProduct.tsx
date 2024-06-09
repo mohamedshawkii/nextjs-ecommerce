@@ -8,7 +8,7 @@ export default function StoreAllProduct(productsData: any) {
     const NewproductsData = productsData.productsData;
 
     return (
-        <div className='w-full'>
+        <div className='w-full overflow-scroll overflow-x-hidden h-[60rem]'>
             {NewproductsData && (
                 <div className='
                     grid
