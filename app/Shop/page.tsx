@@ -56,10 +56,10 @@ const page = () => {
     client.fetch(query).then(
       (res) => {
         if (res) {
-          const byPrice = res.filter(
+          const zeroToHundredRange = res.filter(
             (res: { price: number; }) => res?.price < 100);
           // console.log(byPrice);
-          setProductsData(byPrice);
+          setProductsData(zeroToHundredRange);
         }
       }
     )
@@ -77,10 +77,10 @@ const page = () => {
     client.fetch(query).then(
       (res) => {
         if (res) {
-          const byPrice = res.filter(
+          const hundredToTwoHundredRange = res.filter(
             (res: { price: number; }) => res?.price < 199.99 && res?.price > 100);
           // console.log(byPrice);
-          setProductsData(byPrice);
+          setProductsData(hundredToTwoHundredRange);
         }
       }
     )
@@ -98,10 +98,10 @@ const page = () => {
     client.fetch(query).then(
       (res) => {
         if (res) {
-          const byPrice = res.filter(
+          const twoHundredTothreeHundredRange = res.filter(
             (res: { price: number; }) => res?.price < 299.9 && res?.price > 200);
           // console.log(byPrice);
-          setProductsData(byPrice);
+          setProductsData(twoHundredTothreeHundredRange);
         }
       }
     )
@@ -119,10 +119,11 @@ const page = () => {
     client.fetch(query).then(
       (res) => {
         if (res) {
-          const byPrice = res.filter(
-            (res: { price: number; }) => res?.price > 300.00);
+          const overthreeHundredRange = res.filter(
+            (res: { price: number; }) => res?.price > 300.00
+          );
           // console.log(byPrice);
-          setProductsData(byPrice);
+          setProductsData(overthreeHundredRange);
         }
       }
     )
@@ -136,34 +137,37 @@ const page = () => {
       details,
       "slug": slug.current,
       "imageUrl": image[0].asset->url,
+      category,
       }`
     client.fetch(query).then(
       (res) => {
         if (res) {
-          const byPrice = res.filter(
-            (res: { category: string }) => res?.category.includes("Wireless"));
-          console.log(byPrice);
-          setProductsData(byPrice);
+          const wirelessCategoryRange = res.filter(
+            (item: { category: string }) => item?.category.includes("Wireless"));
+          // console.log(wirelessCategoryRange);
+          setProductsData(wirelessCategoryRange);
         }
       }
     )
   }
+
   function earbudsCategory() {
     const query = `*[_type == "products"][]{
-      _id,
+       _id,
       price,
       name,
       details,
       "slug": slug.current,
       "imageUrl": image[0].asset->url,
+      category,
       }`
     client.fetch(query).then(
       (res) => {
         if (res) {
-          const byPrice = res.filter(
+          const earbudsCategoryRange = res.filter(
             (res: { category: string; }) => res?.category === 'Earbuds');
-          console.log(byPrice);
-          setProductsData(byPrice);
+          // console.log(earbudsCategoryRange);
+          setProductsData(earbudsCategoryRange);
         }
       }
     )
@@ -171,26 +175,25 @@ const page = () => {
 
   function headphoneCategory() {
     const query = `*[_type == "products"][]{
-      _id,
+       _id,
       price,
       name,
       details,
       "slug": slug.current,
       "imageUrl": image[0].asset->url,
+      category,
       }`
     client.fetch(query).then(
       (res) => {
         if (res) {
-          const byPrice = res.filter(
+          const headphoneCategoryRange = res.filter(
             (res: { category: string; }) => res?.category === 'Headphone');
-          setProductsData(byPrice);
-          console.log(byPrice);
+          // console.log(headphoneCategoryRange);
+          setProductsData(headphoneCategoryRange);
         }
       }
     )
   }
-
-
 
   return (
     <div className='px-[10rem] w-full h-auto' >
@@ -205,7 +208,7 @@ const page = () => {
           <h2>Our Products</h2>
         </div>
       </div>
-      <div className='flex flex-row w-full h-auto pb-[4rem]  '> 
+      <div className='flex flex-row w-full h-auto pb-[4rem]  '>
         <div className='pr-[2rem]'>
           <SideBare
             allPrices={allPrices}

@@ -12,7 +12,6 @@ const NewsLetter = () => {
     const [secondImages, setSecondImages] = useState('');
     const [signedUp, setSignedUp] = useState(false);
 
-
     const PostToEmailList = (e: { preventDefault: () => void; }) => {
         e.preventDefault();
 
@@ -91,3 +90,4 @@ const NewsLetter = () => {
 }
 
 export default NewsLetter
+

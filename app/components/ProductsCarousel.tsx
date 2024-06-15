@@ -12,7 +12,7 @@ import Link from 'next/link';
 import { simplifiedProduct } from '../interface';
 
 function ProductsCarousel() {
-  const [products, setProducts] = useState<simplifiedProduct | null >(null);
+  const [products, setProducts] = useState<simplifiedProduct | null>(null);
 
   useEffect(() => {
     const query = `*[_type == "products"][]{
@@ -30,7 +30,7 @@ function ProductsCarousel() {
       }
     )
   }, [])
-
+  
   return (
     <section>
       <div className='py-[3rem] pl-[10rem] h-[41rem] flex flex-col gap-8'>
@@ -70,7 +70,7 @@ function ProductsCarousel() {
                   </div>
                 </SwiperSlide>
               ))}
-              </>
+            </>
             )}
           </Swiper>
         </div>

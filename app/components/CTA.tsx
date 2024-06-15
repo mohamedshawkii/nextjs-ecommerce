@@ -1,11 +1,21 @@
+import Link from 'next/link'
 import React from 'react'
+type muType = {
+    title: string
+    hrefPath: string,
+}
 
-export const CTA = () => {
+function CTA({ title,hrefPath }: muType) {
     return (
-        <button className='px-[2.5rem] py-[1rem] font-semibold text-lg bg-[#141718] text-[#FEFEFE] rounded-2xl
+        <Link href={`${hrefPath}`}>
+            <button className=' text-pretty w-[13rem] h-[4rem] font-semibold text-lg bg-[#141718] text-[#FEFEFE] rounded-2xl
             hover:bg-transparent hover:text-[#141718] border-[2px] border-[#141718] 
         '>
-            Shopping Now
-        </button>
+                {title}
+            </button>
+        </Link>
+
     )
 }
+
+export default CTA
