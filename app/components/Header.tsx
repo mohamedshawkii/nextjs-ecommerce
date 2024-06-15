@@ -1,7 +1,7 @@
 import client from '@/lib/client'
 import Image from 'next/image';
 import React from 'react'
-import { CTA } from './CTA';
+import CTA from './CTA';
 
 async function GetData() {
     const query = `*[_type == "herosection"][0...4]{"imageUrl": image[0].asset->url,}`
@@ -30,9 +30,9 @@ export default async function Header() {
                         Listen to <br/> the <span className='text-[#377DFF] font-medium'>amazing</span><br/> 
                          music sound.</h2>
                     <p className='text-lg'>Experience music like never before</p>
-                    <CTA/>
+                    <CTA title='Shopping Now' hrefPath='/Shop'/>
                 </div>
-            </div>
+            </div> 
         </header>
 
     )
