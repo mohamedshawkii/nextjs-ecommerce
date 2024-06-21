@@ -37,22 +37,19 @@ function ProductsCarousel() {
         <div className='font-semibold text-5xl'>
           <p>New Arrivals</p>
         </div>
-        <div className=''>
+        <div>
           <Swiper
-            slidesPerView={3}
+            slidesPerView={4}
             spaceBetween={30}
             freeMode={true}
             pagination={{
               clickable: true,
             }}
             modules={[FreeMode, Pagination]}
-            style={{
-
-            }}
           >
             {products && (<>
               {products.map((item) => (
-                <SwiperSlide key={item._id}>
+                <SwiperSlide key={item._id} className="w-auto">
                   <div className='w-[16.5rem] h-[28.5rem] 
                   flex flex-col justify-center items-center gap-6'>
                     <div className='flex justify-center items-center w-full h-3/4 bg-[#F3F5F7]'>

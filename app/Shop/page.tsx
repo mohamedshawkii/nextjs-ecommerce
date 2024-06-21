@@ -18,6 +18,7 @@ const page = () => {
       details,
       "slug": slug.current,
       "imageUrl": image[0].asset->url,
+      price_id,
       }`
     client.fetch(query).then(
       (res) => {
@@ -35,6 +36,7 @@ const page = () => {
       details,
       "slug": slug.current,
       "imageUrl": image[0].asset->url,
+      price_id,
       }`
     client.fetch(query).then(
       (res) => {
@@ -52,6 +54,7 @@ const page = () => {
       details,
       "slug": slug.current,
       "imageUrl": image[0].asset->url,
+      price_id,
       }`
     client.fetch(query).then(
       (res) => {
@@ -73,6 +76,7 @@ const page = () => {
       details,
       "slug": slug.current,
       "imageUrl": image[0].asset->url,
+      price_id,
       }`
     client.fetch(query).then(
       (res) => {
@@ -94,6 +98,7 @@ const page = () => {
       details,
       "slug": slug.current,
       "imageUrl": image[0].asset->url,
+      price_id,
       }`
     client.fetch(query).then(
       (res) => {
@@ -115,6 +120,7 @@ const page = () => {
       details,
       "slug": slug.current,
       "imageUrl": image[0].asset->url,
+      price_id,
       }`
     client.fetch(query).then(
       (res) => {
@@ -137,7 +143,8 @@ const page = () => {
       details,
       "slug": slug.current,
       "imageUrl": image[0].asset->url,
-      category,
+      price_id,
+      category
       }`
     client.fetch(query).then(
       (res) => {
@@ -159,7 +166,8 @@ const page = () => {
       details,
       "slug": slug.current,
       "imageUrl": image[0].asset->url,
-      category,
+      price_id,
+      category
       }`
     client.fetch(query).then(
       (res) => {
@@ -181,7 +189,9 @@ const page = () => {
       details,
       "slug": slug.current,
       "imageUrl": image[0].asset->url,
-      category,
+      price_id,
+      category
+
       }`
     client.fetch(query).then(
       (res) => {

@@ -10,7 +10,7 @@
 }
 
 /* Remove default margin */
-*{
+* {
   margin: 0;
   padding: 0;
   font: inherit;
@@ -18,7 +18,7 @@
 
 /* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
 ul,
-ol{
+ol {
   list-style: none;
 }
 
@@ -28,9 +28,9 @@ html:focus-within {
 }
 
 html,
-body{
-    margin: auto;
-    height: 100%;
+body {
+  margin: auto;
+  height: 100%;
 }
 
 /* Set core body defaults */
@@ -55,9 +55,9 @@ picture {
 /* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
 @media (prefers-reduced-motion: reduce) {
   html:focus-within {
-   scroll-behavior: auto;
+    scroll-behavior: auto;
   }
-  
+
   *,
   *::before,
   *::after {
@@ -68,7 +68,7 @@ picture {
   }
 }
 
-:root{
+:root {
   --primary-clr: #000000;
 
   --secondary-clr-1: #377DFF;
@@ -81,23 +81,25 @@ picture {
   --neutral-clr-3: #343839;
   --neutral-clr-4: #6C7275;
   --neutral-clr-5: #E8ECEF;
-  --neutral-clr-6: #F3F5F7; 
+  --neutral-clr-6: #F3F5F7;
   --neutral-clr-7: #FEFEFE;
-  
-  
+
+
 }
 
-.BG-Gradient{
-  background: linear-gradient(27deg, rgba(255,171,0,1) 0%, rgba(255,203,97,1) 100%);
+.BG-Gradient {
+  background: linear-gradient(27deg, rgba(255, 171, 0, 1) 0%, rgba(255, 203, 97, 1) 100%);
 }
 
-::-webkit-scrollbar{
+::-webkit-scrollbar {
   width: 0.4rem;
   height: 0.3rem;
 }
-::-webkit-scrollbar-corner{
+
+::-webkit-scrollbar-corner {
   background: none;
-}              
+}
+
 ::-webkit-scrollbar-track {
   background: var(--neutral-clr-5);
   border-radius: 100vw;
@@ -114,18 +116,3 @@ picture {
   background: var(--primary-clr);
 }
 
-/* .swiper-pagination-color{
-  color: #6C7275"
-}
-.wiper-pagination-bullet-active{
-  background-color: #377DFF"
-}
-.swiper-pagination-bullet-inactive{
-  background-color: #6C7275"
-}
-.swiper-pagination-bullet-size{
-  color: #6C7275"
-}
-/* .swiper-pagination-bullet-horizontal-gap{
-  color: #6C7275"
-} */ 
