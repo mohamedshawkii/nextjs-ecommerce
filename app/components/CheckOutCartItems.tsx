@@ -4,14 +4,9 @@ import client from '@/lib/client';
 import { useEffect, useState } from 'react'
 import { ProductInterFace } from '../interface';
 import Image from 'next/image';
-import { useShoppingCart } from '../context/ShoppingCartContext';
-import { FaPlus } from "react-icons/fa6";
-import { FaMinus } from "react-icons/fa";
-import { TiDeleteOutline } from 'react-icons/ti';
 
-function CartItem({ keyId, quantity }: { keyId: string | number, quantity: number }) {
+function CheckOutCartItems({ keyId, quantity }: { keyId: string | number, quantity: number }) {
     const [product, setProduct] = useState<ProductInterFace | null>();
-    const { increaseCartQuantity, decreaseCartQuantity, removeFromCart } = useShoppingCart();
 
     useEffect(() => {
         if (keyId) {
@@ -50,20 +45,11 @@ function CartItem({ keyId, quantity }: { keyId: string | number, quantity: numbe
                         </div>
                     </div>
 
-                    <div className='flex flex-col justify-between items-start w-3/6 h-full text-pretty'>
-                        {item.name}
-                        <div className='flex flex-row justify-center items-center border rounded-lg mt-auto'>
-                            <button className='p-2' onClick={() => increaseCartQuantity(item.price_id)}><FaPlus size={18} /></button>
-                            <div className='py-2 px-6 text-base font-medium'>{quantity}</div>
-                            <button className='p-2' onClick={() => decreaseCartQuantity(item.price_id)}><FaMinus size={18} /></button>
-                        </div>
-                    </div>
-
-                    <div className='flex flex-col justify-center items-center w-1/6 h-full'>
-                        <div className='text-pretty'>
-                            {Math.round(item.price * quantity)}
-                        </div>
-                        <button className='mt-auto pb-2 ' onClick={() => removeFromCart(item.price_id)}><TiDeleteOutline size={27} /></button>
+                    <div className='flex flex-col justify-start items-start w-4/6 h-full text-pretty'>
+                        <div className='text-wrap text-lg line-clamp-2 font-bold'>{item.name}</div>
+                        <div><span className=' font-semibold'>quantity:</span> {quantity}</div>
+                        <div><span className=' font-semibold'>price:</span> {item.price}</div>
+                        <div><span className=' font-semibold'>SubTotal:</span> {item.price * quantity}</div>
                     </div>
                 </div>
             )}
@@ -71,4 +57,4 @@ function CartItem({ keyId, quantity }: { keyId: string | number, quantity: numbe
     )
 }
 
-export default CartItem
+export default CheckOutCartItems

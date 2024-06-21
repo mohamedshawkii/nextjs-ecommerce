@@ -21,13 +21,13 @@ export default function RootLayout({
   return (
     <ShoppingCartProvider>
       <SessionWrapper>
-        <html lang="en">
-          <body className={inter.className}>
-            <NavBar />
-            {children}
-            <Footer />
-          </body>
-        </html>
+          <html lang="en">
+            <body className={inter.className}>
+              <NavBar />
+              {children}
+              <Footer />
+            </body>
+          </html>
       </SessionWrapper>
     </ShoppingCartProvider>
   );

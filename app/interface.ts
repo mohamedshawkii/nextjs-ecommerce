@@ -1,4 +1,5 @@
 export interface simplifiedProduct {
+  [x: string]: any;
   filter(arg0: (item: { name: string; indexOf: () => void; toLowerCase: () => void; }) => boolean): import("react").SetStateAction<simplifiedProduct | null | undefined>;
   map(arg0: (item: any) => import("react").JSX.Element): unknown;
   _id: string,
@@ -7,6 +8,7 @@ export interface simplifiedProduct {
   details: string,
   slug: string,
   imageUrl: string,
+  price_id: string,
 }
 
 export type ProductInterFace = {
@@ -19,4 +21,5 @@ export type ProductInterFace = {
   slug: string,
   imageUrl: string,
   category: string,
+  price_id: string,
 }

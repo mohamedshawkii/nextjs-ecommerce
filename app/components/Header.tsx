@@ -2,6 +2,7 @@ import client from '@/lib/client'
 import Image from 'next/image';
 import React from 'react'
 import CTA from './CTA';
+import Link from 'next/link';
 
 async function GetData() {
     const query = `*[_type == "herosection"][0...4]{"imageUrl": image[0].asset->url,}`
@@ -10,18 +11,18 @@ async function GetData() {
 }
 
 export default async function Header() {
-    const data = await GetData();
+    const data = await GetData(); 
 
     return (
         <header className='BG-Gradient'>
             <div className=' flex flex-row justify-center items-center gap-12 h-[48rem] mr-16'>
-                <div className='w-4/12 h-auto mt-auto'>
+                <div className='w-auto h-auto mt-auto'>
                     <Image
                         src={data[3].imageUrl}
                         alt="Hero photo"
                         width={800}
                         height={800}
-                        className='w-auto h-[38rem]'
+                        className='w-auto h-[38rem] '
                         priority
                     />
                 </div>
@@ -30,7 +31,11 @@ export default async function Header() {
                         Listen to <br/> the <span className='text-[#377DFF] font-medium'>amazing</span><br/> 
                          music sound.</h2>
                     <p className='text-lg'>Experience music like never before</p>
-                    <CTA title='Shopping Now' hrefPath='/Shop'/>
+
+                    <Link href={'/Shop'}>
+                        <CTA title='Shopping Now'/>
+                    </Link>
+                    
                 </div>
             </div> 
         </header>

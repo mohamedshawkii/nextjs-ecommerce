@@ -1,7 +1,9 @@
 "use client";
 
+import { IoCloseCircleSharp } from "react-icons/io5";
 import { signIn, signOut, useSession } from "next-auth/react";
 import React, { useEffect } from "react";
+import CTA from "./CTA";
 
 type Myfunctions = {
   handleShowLogin: () => void,
@@ -18,7 +20,7 @@ const AuthLogin = ({ handleShowLogin, handleUserProfile }: Myfunctions) => {
     } else {
       handleUserProfile('');
     }
-  },[session])
+  })
 
   function handleClickedWrapper(e: any) {
     if (e.target.id === 'wrapper') {
@@ -28,51 +30,48 @@ const AuthLogin = ({ handleShowLogin, handleUserProfile }: Myfunctions) => {
   return (
     <div
       id="wrapper"
-      className="w-screen h-screen fixed inset-0 backdrop-filter backdrop-brightness-75 backdrop-blur-md z-[50] "
+      className="w-screen h-screen fixed inset-0 backdrop-filter backdrop-brightness-75 backdrop-blur-md z-[50]"
       onClick={handleClickedWrapper}
     >
       <div
         className="
+        relative
         bg-white
         flex flex-col justify-center
         items-center mt-[5rem] mx-auto w-3/4 h-3/4"
       >
-        <button className="self-end" onClick={handleShowLogin}>X</button>
+        <button
+          className="flex flex-row justify-center items-center gap-4 absolute top-0 right-0 p-8"
+          onClick={handleShowLogin}
+        >
+          <span className="font-bold text-lg">Close</span><IoCloseCircleSharp size={27} />
+        </button>
         {session ? (
-          <div className=" flex flex-col w-auto h-auto">
+          <div className=" flex flex-col justify-center items-center gap-4 w-auto h-auto">
             <img
               src={session.user?.image as string}
               className="rounded-full h-20 w-20"
             ></img>
-            <h1 className="text-3xl text-green-500 font-bold">
+            <h1 className="text-3xl font-bold">
               Welcome back, {session.user?.name}
             </h1>
             <p className="text-2xl font-semibold">{session.user?.email}</p>
-            <button
-              onClick={() => signOut()}
-              className="border border-black rounded-lg bg-red-400 px-5 py-1"
-            >
-              Sign Out
-            </button>
+            <div onClick={() => signOut()}>
+              <CTA title={" Sign Out"} />
+            </div>
           </div>
         ) : (
-          <div className=" flex- flex-col w-auto h-auto">
-            <h1 className="text-3xl text-red-500 font-bold">
+          <div className=" flex flex-col justify-center items-center w-auto h-auto gap-8">
+            <h1 className="text-3xl font-bold">
               You're not logged in
             </h1>
             <div className="flex space-x-5">
-              <button
-                onClick={() => signIn("google")}
-                className="border border-black rounded-lg px-5 py-1"
-              >
-                Sign in with Google
-              </button>
-              <button
-                onClick={() => signIn("github")}
-                className="border border-black rounded-lg bg-green-500 px-5 py-1"
-              >
-                Sign in with GitHub
-              </button>
+              <div onClick={() => signIn("google")}>
+                <CTA title={"Sign in with Google"} />
+              </div>
+              <div onClick={() => signIn("github")}>
+                <CTA title={"Sign in with GitHub"} />
+              </div>
             </div>
           </div>
         )}
