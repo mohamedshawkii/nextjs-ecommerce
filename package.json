@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@reduxjs/toolkit": "^2.2.5",
     "@sanity/image-url": "^1.0.2",
     "@sanity/vision": "^3.44.0",
     "@stripe/react-stripe-js": "^2.7.1",

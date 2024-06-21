@@ -8,6 +8,7 @@ type ShoppingCartProviderProps = {
 
 type cartItems = {
     id: number | string,
+
     quantity: number
 }
 
@@ -82,6 +83,7 @@ export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
 
     return (
         <ShoppingCartContext.Provider value={{ getItemQuantity, increaseCartQuantity, decreaseCartQuantity, removeFromCart,cartItems,cartQuantity,total,getTotalPrice }}>
+
             {children}
         </ShoppingCartContext.Provider>
     )

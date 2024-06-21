@@ -46,7 +46,6 @@ export default function SearchBar() {
   }, [userInput])
   // console.log('userInput', userInput);
   // console.log('filtered', filtered);
-
   return (
     <div className="flex flex-row justify-end items-center relative">
       <form action={handleSearchInput}>
@@ -89,6 +88,7 @@ export default function SearchBar() {
                       <div className='flex flex-row justify-center items-center border rounded-lg mt-auto'>
                         <button className='p-2' onClick={() => increaseCartQuantity(item.price_id)}><FaPlus size={18} /></button>
                         <button className='p-2' onClick={() => decreaseCartQuantity(item.price_id)}><FaMinus size={18} /></button>
+
                       </div>
                     </div>
                     <div className='flex flex-col justify-center items-center w-1/6 h-full'>
@@ -96,6 +96,7 @@ export default function SearchBar() {
                         {item.price}
                       </div>
                       <button className='mt-auto pb-2 ' onClick={() => removeFromCart(item.price_id)}><TiDeleteOutline size={27} /></button>
+
                     </div>
                   </div>
                 ))}

@@ -23,9 +23,9 @@ export default function StoreAllProduct(productsData: any) {
                     justify-center
                     items-center
                     gap-6'
-                >
-                    {NewproductsData.map((item: any) => (
-                        <div className='
+                    >
+                        {NewproductsData.map((item: any) => (
+                            <div className='
                             w-[16.5rem] h-[28.5rem] 
                             flex flex-col justify-center items-center gap-6'
                             key={item._id}
@@ -54,10 +54,10 @@ export default function StoreAllProduct(productsData: any) {
                                     <div>${item.price}</div>
                                 </Link>
                             </div>
-                        </div>
-                    ))}
-                </div>
-            )}
+                        ))}
+                    </div>
+                )}
+            </div>
         </div>
     );
 }

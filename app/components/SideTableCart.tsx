@@ -58,6 +58,7 @@ function SideTableCart({ handleOpenCart }: Myfunctions) {
     })
 
     function handleClickedWrapper(e: any) {
+
         if (e.target.id === 'wrapper') {
             handleOpenCart();
         }
@@ -84,6 +85,7 @@ function SideTableCart({ handleOpenCart }: Myfunctions) {
                                     keyId={item.id}
                                     quantity={item.quantity}
                                 />)
+
                             )
                         }
                     </div>
@@ -96,6 +98,7 @@ function SideTableCart({ handleOpenCart }: Myfunctions) {
                                 <CTA title={'Checkout'} />
                             </Link>
                         </div>
+
                     </div>
                 </div>
             </div>
