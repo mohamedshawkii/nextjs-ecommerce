@@ -10,12 +10,14 @@ import { FaMinus } from "react-icons/fa";
 import { TiDeleteOutline } from 'react-icons/ti';
 
 function CartItem({ keyId, quantity }: { keyId: string | number, quantity: number }) {
+
     const [product, setProduct] = useState<ProductInterFace | null>();
     const { increaseCartQuantity, decreaseCartQuantity, removeFromCart } = useShoppingCart();
 
     useEffect(() => {
         if (keyId) {
             const query = `*[_type == "products" && price_id == "${keyId}" ][]{
+
                 _id,
                 price,
                 name,
@@ -23,6 +25,7 @@ function CartItem({ keyId, quantity }: { keyId: string | number, quantity: numbe
                 "slug": slug.current,
                 "imageUrl": image[0].asset->url,
                 price_id,
+
                 }`
 
             client.fetch(query).then(
@@ -31,7 +34,6 @@ function CartItem({ keyId, quantity }: { keyId: string | number, quantity: numbe
                 }
             )
         }
-
     }, [keyId])
 
     return (
@@ -56,6 +58,7 @@ function CartItem({ keyId, quantity }: { keyId: string | number, quantity: numbe
                             <button className='p-2' onClick={() => increaseCartQuantity(item.price_id)}><FaPlus size={18} /></button>
                             <div className='py-2 px-6 text-base font-medium'>{quantity}</div>
                             <button className='p-2' onClick={() => decreaseCartQuantity(item.price_id)}><FaMinus size={18} /></button>
+
                         </div>
                     </div>
 
@@ -64,6 +67,7 @@ function CartItem({ keyId, quantity }: { keyId: string | number, quantity: numbe
                             {Math.round(item.price * quantity)}
                         </div>
                         <button className='mt-auto pb-2 ' onClick={() => removeFromCart(item.price_id)}><TiDeleteOutline size={27} /></button>
+
                     </div>
                 </div>
             )}

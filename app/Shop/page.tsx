@@ -160,7 +160,7 @@ const page = () => {
 
   function earbudsCategory() {
     const query = `*[_type == "products"][]{
-      _id,
+       _id,
       price,
       name,
       details,
@@ -183,7 +183,7 @@ const page = () => {
 
   function headphoneCategory() {
     const query = `*[_type == "products"][]{
-      _id,
+       _id,
       price,
       name,
       details,
@@ -191,6 +191,7 @@ const page = () => {
       "imageUrl": image[0].asset->url,
       price_id,
       category
+
       }`
     client.fetch(query).then(
       (res) => {

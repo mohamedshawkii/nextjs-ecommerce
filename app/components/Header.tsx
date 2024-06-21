@@ -4,6 +4,7 @@ import React from 'react'
 import CTA from './CTA';
 import Link from 'next/link';
 
+
 async function GetData() {
     const query = `*[_type == "herosection"][0...4]{"imageUrl": image[0].asset->url,}`
     const data = await client.fetch(query);
@@ -31,11 +32,10 @@ export default async function Header() {
                         Listen to <br/> the <span className='text-[#377DFF] font-medium'>amazing</span><br/> 
                          music sound.</h2>
                     <p className='text-lg'>Experience music like never before</p>
-
                     <Link href={'/Shop'}>
                         <CTA title='Shopping Now'/>
                     </Link>
-                    
+
                 </div>
             </div> 
         </header>
