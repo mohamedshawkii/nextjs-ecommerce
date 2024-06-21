@@ -24,6 +24,7 @@ export default function SearchBar() {
       details,
       "slug": slug.current,
       "imageUrl": image[0].asset->url,
+      price_id,
       }`
     client.fetch(query).then(
       (res) => {
@@ -44,8 +45,7 @@ export default function SearchBar() {
     setFiltered(null);
   }, [userInput])
   // console.log('userInput', userInput);
-  console.log('filtered', filtered);
-
+  // console.log('filtered', filtered);
   return (
     <div className="flex flex-row justify-end items-center relative">
       <form action={handleSearchInput}>
@@ -86,15 +86,17 @@ export default function SearchBar() {
                     <div className='flex flex-col justify-start items-start w-3/6 h-full text-pretty'>
                       {item.name}
                       <div className='flex flex-row justify-center items-center border rounded-lg mt-auto'>
-                        <button className='p-2' onClick={() => increaseCartQuantity(item._id)}><FaPlus size={18} /></button>
-                        <button className='p-2' onClick={() => decreaseCartQuantity(item._id)}><FaMinus size={18} /></button>
+                        <button className='p-2' onClick={() => increaseCartQuantity(item.price_id)}><FaPlus size={18} /></button>
+                        <button className='p-2' onClick={() => decreaseCartQuantity(item.price_id)}><FaMinus size={18} /></button>
+
                       </div>
                     </div>
                     <div className='flex flex-col justify-center items-center w-1/6 h-full'>
                       <div className='text-pretty'>
                         {item.price}
                       </div>
-                      <button className='mt-auto pb-2 ' onClick={() => removeFromCart(item._id)}><TiDeleteOutline size={27} /></button>
+                      <button className='mt-auto pb-2 ' onClick={() => removeFromCart(item.price_id)}><TiDeleteOutline size={27} /></button>
+
                     </div>
                   </div>
                 ))}
