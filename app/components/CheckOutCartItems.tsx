@@ -31,8 +31,8 @@ function CheckOutCartItems({ keyId, quantity }: { keyId: string | number, quanti
 
     return (
         <div>
-            {product && product.map((item) =>
-                <div className='h-[6rem] flex flex-row gap-4 justify-start items-start'>
+            {product && product.map((item,_index) =>
+                <div key={_index} className='h-[6rem] flex flex-row gap-4 justify-start items-start'>
                     <div className='w-auto h-full'>
                         <div className='h-[6rem] w-[5rem] bg-[#F3F5F7] flex'>
                             <Image

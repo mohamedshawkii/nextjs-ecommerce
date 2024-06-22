@@ -4,6 +4,7 @@ import { IoCloseCircleSharp } from "react-icons/io5";
 import { signIn, signOut, useSession } from "next-auth/react";
 import React, { useEffect } from "react";
 import CTA from "./CTA";
+import Image from "next/image";
 
 type Myfunctions = {
   handleShowLogin: () => void,
@@ -48,10 +49,11 @@ const AuthLogin = ({ handleShowLogin, handleUserProfile }: Myfunctions) => {
         </button>
         {session ? (
           <div className=" flex flex-col justify-center items-center gap-4 w-auto h-auto">
-            <img
+            <Image
+              width={200}
+              height={200}
               src={session.user?.image as string}
-              className="rounded-full h-20 w-20"
-            ></img>
+              className="rounded-full h-20 w-20" alt={""}/>
             <h1 className="text-3xl font-bold">
               Welcome back, {session.user?.name}
             </h1>
