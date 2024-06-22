@@ -20,7 +20,7 @@ type ShoppingCartContext = {
     getTotalPrice: (total: number) => void
     cartQuantity: number
     cartItems: cartItems[]
-    total:number,
+    total: number,
 }
 
 const ShoppingCartContext = createContext({} as ShoppingCartContext)
@@ -33,11 +33,11 @@ export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
     const [cartItems, setCartItems] = useState<cartItems[]>([]);
     const [total, setTotal] = useState<number>(0);
 
-    function getTotalPrice (total: number){
+    function getTotalPrice(total: number) {
         setTotal(total)
     }
     const cartQuantity = cartItems.reduce(
-        (quantity, item) => item.quantity + quantity,0
+        (quantity, item) => item.quantity + quantity, 0
     )
     function getItemQuantity(id: number) {
         return cartItems.find(item => item.id === id)?.quantity || 0
@@ -82,7 +82,7 @@ export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
     }
 
     return (
-        <ShoppingCartContext.Provider value={{ getItemQuantity, increaseCartQuantity, decreaseCartQuantity, removeFromCart,cartItems,cartQuantity,total,getTotalPrice }}>
+        <ShoppingCartContext.Provider value={{ getItemQuantity, increaseCartQuantity, decreaseCartQuantity, removeFromCart, cartItems, cartQuantity, total, getTotalPrice }}>
 
             {children}
         </ShoppingCartContext.Provider>
