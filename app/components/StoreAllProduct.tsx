@@ -14,18 +14,18 @@ export default function StoreAllProduct(productsData: any) {
         <div className='w-full h-[60rem] overflow-y-scroll overflow-x-hidden'>
             {NewproductsData && (
                 <div className='
-                    grid
-                    Xsm:max-Beforexl:grid-cols-1
-                    Beforexl:max-BasePcScreen:grid-cols-2
-                    BasePcScreen:max-MidPcScreen:grid-cols-3
-                    MidPcScreen:max-WidePcScreen:grid-cols-4
-                    WidePcScreen:grid-cols-5
-                    justify-center
-                    items-center
-                    gap-6'
-                    >
-                        {NewproductsData.map((item: any) => (
-                            <div className='
+                grid
+                Xsm:max-Beforexl:grid-cols-1
+                Beforexl:max-BasePcScreen:grid-cols-2
+                BasePcScreen:max-MidPcScreen:grid-cols-3
+                MidPcScreen:max-WidePcScreen:grid-cols-4
+                WidePcScreen:grid-cols-5
+                justify-center
+                items-center
+                gap-6'
+                >
+                    {NewproductsData.map((item: any) => (
+                        <div className='
                             w-[16.5rem] h-[28.5rem] 
                             flex flex-col justify-center items-center gap-6'
                             key={item._id}
@@ -46,7 +46,7 @@ export default function StoreAllProduct(productsData: any) {
                             </div>
 
                             <div className='self-start flex flex-col justify-start items-start
-                                font-bold text-base'
+                        font-bold text-base'
                             >
                                 <Link href={`Product/${item.slug}`} className="">
                                     <div>{item.name}</div>
@@ -54,10 +54,10 @@ export default function StoreAllProduct(productsData: any) {
                                     <div>${item.price}</div>
                                 </Link>
                             </div>
-                        ))}
-                    </div>
-                )}
-            </div>
+                        </div>))}
+
+                </div>
+            )}
         </div>
     );
 }
