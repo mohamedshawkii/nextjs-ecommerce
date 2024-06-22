@@ -8,9 +8,6 @@ import Image from 'next/image';
 import React, { useEffect, useState } from 'react'
 import { FaPlus } from 'react-icons/fa';
 import { FaMinus } from 'react-icons/fa6';
-import { TiDeleteOutline } from 'react-icons/ti';
-
-
 
 export default function ProductPage({ params, }: { params: { slug: string } }) {
   const [productBySlug, setProductBySlug] = useState<simplifiedProduct | null>(null);

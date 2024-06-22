@@ -7,7 +7,7 @@ import { ProductInterFace } from '../interface';
 import client from '@/lib/client';
 import { LuSettings2 } from 'react-icons/lu';
 
-const page = () => {
+const ShopPage = () => {
   const [productsData, setProductsData] = useState<ProductInterFace | null>(null);
 
   useEffect(() => {
@@ -237,4 +237,4 @@ const page = () => {
   )
 }
 
-export default page
+export default ShopPage
