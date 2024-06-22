@@ -47,6 +47,7 @@ export default function StoreAllProduct(productsData: any) {
 
                             <div className='self-start flex flex-col justify-start items-start
                         font-bold text-base'
+
                             >
                                 <Link href={`Product/${item.slug}`} className="">
                                     <div>{item.name}</div>
