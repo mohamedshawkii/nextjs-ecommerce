@@ -49,7 +49,7 @@ function CheckOutCartItems({ keyId, quantity }: { keyId: string | number, quanti
                         <div className='text-wrap text-lg line-clamp-2 font-bold'>{item.name}</div>
                         <div><span className=' font-semibold'>quantity:</span> {quantity}</div>
                         <div><span className=' font-semibold'>price:</span> {item.price}</div>
-                        <div><span className=' font-semibold'>SubTotal:</span> {item.price * quantity}</div>
+                        <div><span className=' font-semibold'>SubTotal:</span> {Math.round(item.price * quantity)}</div>
                     </div>
                 </div>
             )}
