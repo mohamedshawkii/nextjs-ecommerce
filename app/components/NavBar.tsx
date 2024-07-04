@@ -14,6 +14,7 @@ import SearchBar from "./SearchBar";
 import SideTableCart from "./SideTableCart";
 import { useShoppingCart } from "../context/ShoppingCartContext";
 import { usePathname } from "next/navigation";
+import { GrClose } from "react-icons/gr";
 
 function NavBar() {
   const NavLinks = [
@@ -32,6 +33,7 @@ function NavBar() {
   const [showLogin, setShowLogin] = useState(false);
   const [userProfile, setuserProfile] = useState<string>('');
   const [openCart, setOpenCart] = useState(false);
+  const [closeOffer, setCloseOffer] = useState(false)
 
   const currentPath = usePathname();
   const { cartQuantity } = useShoppingCart();
@@ -65,22 +67,36 @@ function NavBar() {
       sm:max-md:gap-1
       bg-transparent"
     >
-      <Link href={'/Shop'}>
-        <div className="flex flex-row justify-center items-center gap-3 w-full h-[2.7rem] overflow-visible text-[#FEFEFE] bg-[#141718]">
+      <div className={`
+        flex flex-row justify-center 
+        items-center w-full h-[2.7rem]
+         text-[#FEFEFE] 
+         bg-[#141718] ${closeOffer ? 'Xsm:hidden' : ''}`}
+      >
+        <div className="Xsm:max-sm:ml-0 ml-auto flex flex-row gap-3 items-center">
           <Copoun />
-          <p>30% off storewide — Limited time!</p>
-          <CTAWithUnderLine />
+          <p className="Xsm:max-sm:text-xs">30% off storewide — Limited time!</p>
+          <div className="Xsm:max-Beforexl:hidden">
+            <CTAWithUnderLine />
+          </div>
         </div>
-      </Link>
+
+        <div className="Xsm:max-sm:ml-2 sm:ml-auto Beforexl:pr-[1rem] ml-16 flex items-center">
+          <button onClick={() => setCloseOffer(true)}>
+            <GrClose size={14} />
+          </button>
+        </div>
+      </div>
 
       <div className="
+      Xsm:max-Beforexl:px-[2.5rem]
       py-4
       px-[10rem]
       flex flex-row 
       justify-between
       items-center"
       >
-        <div className="flex flex-row justify-end items-center">
+        <div className="sm:flex-row-reverse flex flex-row justify-end items-center">
           <div className="sm:hidden relative flex flex-col justify-between items-end">
             {isCollapsed ? (
               <CiMenuBurger
@@ -137,14 +153,16 @@ function NavBar() {
               ) : null}
             </div>
           </div>
+          <div className="Xsm:max-sm:ml-2 mr-auto mt-1 flex items-center">
+            <LogoBlack />
+          </div>
         </div>
-        <LogoBlack />
-        <div className="mx-auto flex flex-row">
+
+        <div className="mx-auto flex flex-row Xsm:max-sm:hidden">
           {NavLinks.map((item, index) => (
             <div
               key={index}
               className="
-              flex
               flex-row
               gap-5
               justify-end
@@ -157,15 +175,15 @@ function NavBar() {
                 <button
                   onClick={() => setIsActive(item.name)}
                   className={`
-            rounded-md
-            text-base
-            font-medium
-            py-2 px-6
-            ${item.href === currentPath
+                    rounded-md
+                    text-base
+                    font-medium
+                    py-2 px-6
+                  ${item.href === currentPath
                       ? "text-[#000000]"
                       : "text-[#6C7275]"
                     }
-            `}
+                  `}
                 >
                   {item.name}
                 </button>
@@ -173,25 +191,34 @@ function NavBar() {
             </div>
           ))}
         </div>
+
         <div className="flex flex-row justify-center items-center gap-2">
-          <SearchBar />
-          <button onClick={handleShowLogin}>
-            {userProfile ? (
-              <div className="w-[1.5rem] h-[1.5rem]">
-                <Image src={userProfile} alt='profileImage' priority width={250} height={250} className="w-[2rem] h-auto object-cover object-center rounded-full" />
-              </div>
-            ) : <UserIcon />}
-          </button>
-          {showLogin && <AuthLogin handleUserProfile={handleUserProfile} handleShowLogin={handleShowLogin} />}
-          <button onClick={handleOpenCart}><ShopingBag /></button>
-          {openCart && <SideTableCart handleOpenCart={handleOpenCart} />}
-          <div className="w-[1.3rem] h-[1.3rem]">
+          <div className="Xsm:max-Beforexl:hidden flex items-center">
+            <SearchBar />
+          </div>
+          <div className="Xsm:max-Beforexl:hidden flex items-center">
+            <button onClick={handleShowLogin}>
+              {userProfile ? (
+                <div className="w-[1.5rem] h-[1.5rem]">
+                  <Image src={userProfile} alt='profileImage' priority width={250} height={250} className="w-[2rem] h-auto object-cover object-center rounded-full" />
+                </div>
+              ) : <UserIcon />}
+            </button>
+            {showLogin && <AuthLogin handleUserProfile={handleUserProfile} handleShowLogin={handleShowLogin} />}
+          </div>
+
+          <div className="relative flex flex-col justify-center items-center">
+            <button onClick={handleOpenCart}><ShopingBag /></button>
             {cartQuantity !== 0 &&
-              <div className="flex justify-center items-center w-auto h-auto rounded-full bg-black text-white text-sm text-center">
-                {cartQuantity}
+              <div className="w-[0.7rem] h-[0.7rem] absolute right-0 bottom-0">
+                <span className="flex justify-center items-center w-auto h-auto rounded-full bg-black text-white text-[0.5rem] font-bold">
+                  {cartQuantity}
+                </span>
               </div>
             }
           </div>
+          {openCart && <SideTableCart handleOpenCart={handleOpenCart} />}
+
         </div>
       </div>
     </nav>

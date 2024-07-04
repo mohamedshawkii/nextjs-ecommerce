@@ -41,11 +41,31 @@ export default function SearchBar() {
     }
   }
 
+  // useEffect(() => {
+  //   function handleSearchPopUp() {
+  //     if (myRef) {
+  //       setShowSearchPopup(true)
+  //     }
+  //   }
+  //   // function handleSearchPopUpToFalse() {
+  //   //   setShowSearchPopup(false)
+  //   // }
+
+  //   // document.addEventListener('click', handleSearchPopUpToFalse);
+
+  //   myRef.current.addEventListener('click', handleSearchPopUp);
+
+  //   return () => {
+  //     myRef.current.removeEventListener('click', handleSearchPopUp);
+  //     // document.addEventListener('click', handleSearchPopUpToFalse);
+  //   };
+
+  // }, [])
+
   useEffect(() => {
     setFiltered(null);
   }, [userInput])
-  // console.log('userInput', userInput);
-  // console.log('filtered', filtered);
+
   return (
     <div className="flex flex-row justify-end items-center relative">
       <form action={handleSearchInput}>
@@ -65,7 +85,7 @@ export default function SearchBar() {
         (<div className="
         overflow-x-hidden overflow-scroll
         mt-10 absolute top-[0px] right-[20px] rounded-xl 
-        w-[25rem] h-auto bg-[#E8ECEF] "
+        w-[25rem] h-[16rem] bg-[#E8ECEF] "
         >
           <div className='flex flex-col gap-4 justify-center items-center py-8 px-4'>
             {filtered && (
@@ -96,7 +116,7 @@ export default function SearchBar() {
                         {item.price}
                       </div>
                       <button className='mt-auto pb-2 ' onClick={() => removeFromCart(item.price_id)}><TiDeleteOutline size={27} /></button>
-
+                        <span className=' text-xs'>Remove</span>
                     </div>
                   </div>
                 ))}
@@ -105,7 +125,6 @@ export default function SearchBar() {
           </div>
         </div>) : null
       }
-
     </div>
   )
 }

@@ -30,26 +30,51 @@ function ProductsCarousel() {
       }
     )
   }, [])
-  
+
   return (
     <section>
-      <div className='py-[3rem] pl-[10rem] h-[41rem] flex flex-col gap-8'>
-        <div className='font-semibold text-5xl'>
+      <div className='
+        Xsm:max-Beforexl:pl-[2.5rem]
+        py-[3rem] pl-[10rem] h-[41rem] flex flex-col gap-8'>
+        <div className=' Xsm:max-Beforexl:font-medium Xsm:max-Beforexl:text-3xl font-semibold text-5xl'>
           <p>New Arrivals</p>
         </div>
         <div>
           <Swiper
-            slidesPerView={4}
+            slidesPerView={1}
             spaceBetween={30}
             freeMode={true}
             pagination={{
               clickable: true,
             }}
             modules={[FreeMode, Pagination]}
+            breakpoints={{
+              320: {
+                slidesPerView: 1,
+                spaceBetween: 20,
+              },
+              640: {
+                slidesPerView: 2,
+                spaceBetween: 20,
+              },
+              1024: {
+                slidesPerView: 3,
+                spaceBetween: 40,
+              },
+              1440: {
+                slidesPerView: 4,
+                spaceBetween: 50,
+              },
+              1700: {
+                slidesPerView: 5,
+                spaceBetween: 50,
+              },
+            }}
+            className="h-[30rem]"
           >
             {products && (<>
               {products.map((item) => (
-                <SwiperSlide key={item._id} className="w-auto">
+                <SwiperSlide key={item._id} >
                   <div className='w-[16.5rem] h-[28.5rem] 
                   flex flex-col justify-center items-center gap-6'>
                     <div className='flex justify-center items-center w-full h-3/4 bg-[#F3F5F7]'>
