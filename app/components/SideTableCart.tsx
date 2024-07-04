@@ -16,6 +16,7 @@ function SideTableCart({ handleOpenCart }: Myfunctions) {
     const [total, setTotal] = useState<number>(0);
     const { cartItems, getTotalPrice, } = useShoppingCart();
     const [emptyCheckOut, setEmptyCheckOut] = useState<boolean>(true);
+    
     // console.log('ids', cartItems);
 
     useEffect(() => {
