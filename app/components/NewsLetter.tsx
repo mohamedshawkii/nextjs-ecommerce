@@ -54,38 +54,49 @@ const NewsLetter = () => {
         )
     }, [])
     return (
-        <div className='flex flex-row justify-center items-center gap-16 w-auto h-[22.5rem] bg-[#E2E4E3]'>
-            {secondImages && (<Image src={secondImages} alt='ads photo' width={1000} height={1000} className='w-auto h-[20rem] rotate-[-26deg]' />)}
-            <div className='flex flex-col justify-center items-center gap-4'>
-                <p className='font-semibold text-3xl'>Join Our Newsletter</p>
-                <p className='mb-[1rem]'>Sign up for deals, new products and promotions</p>
-                <form
-                    action="submit"
-                    onSubmit={PostToEmailList}
-                >
-                    <div className='flex flex-row justify-between items-center h-[3rem] w-[30.5rem] border-b border-[#343839]'>
-                        <EmailIcon />
-                        <input
-                            className='border-none rounded-sm box-border 
-                            outline-none ml-4 mr-auto bg-transparent focus 
-                            w-[22rem] h-auto flex flex-row justify-between gap-2 '
-                            type="text"
-                            placeholder='Email address'
-                            value={emailAdress}
-                            onChange={(e) => setEmailAdress(e.target.value)}
-                            name="emailSignUp"
-                        />
-                        <button type="submit">Signup</button>
+        <section>
+            <div className='flex flex-row justify-center items-center gap-16 w-auto h-auto bg-[#E2E4E3] px-[2.5rem] py-[2rem]'>
+                <div className='Xsm:max-Afterxl:hidden'>
+                    {secondImages && (<Image src={secondImages} alt='ads photo' width={1000} height={1000} className='w-auto h-[20rem] rotate-[-26deg]' />)}
+                </div>
+                <div className='flex flex-col justify-center items-center gap-4'>
+                    <div className=' flex flex-col items-center Xsm:max-Afterxl:text-center gap-4'>
+                        <p className='Xsm:max-Afterxl:text-2xl font-semibold text-4xl'>Join Our Newsletter</p>
+                        <p className='Xsm:max-Afterxl:text-sm mb-[1rem] mx-2'>Sign up for deals, new products and promotions</p>
                     </div>
-                </form>
-                <div className='w-auto h-[3rem] font-semibold text-[#FF5630] self-start'>
-                    {signedUp && <div>Thank You For Signing In</div>}
+
+                    <form
+                        action="submit"
+                        onSubmit={PostToEmailList}
+                    >
+                        <div className='
+                        flex flex-row justify-between 
+                        items-center h-[3rem] 
+                        w-auto border-b border-[#343839]'>
+                            <EmailIcon />
+                            <input
+                                className='border-none rounded-sm box-border 
+                                outline-none ml-4 mr-auto bg-transparent focus 
+                                h-auto flex flex-row justify-between gap-2 w-2/4'
+                                type="text"
+                                placeholder='Email address'
+                                value={emailAdress}
+                                onChange={(e) => setEmailAdress(e.target.value)}
+                                name="emailSignUp"
+                            />
+                            <button type="submit">Signup</button>
+                        </div>
+                    </form>
+                    <div className='w-auto h-[3rem] font-semibold text-[#FF5630] self-start'>
+                        {signedUp && <div>Thank You For Signing In</div>}
+                    </div>
+                </div>
+                <div className='mt-auto Xsm:max-Afterxl:hidden'>
+                    {firstImages && (<Image src={firstImages} alt='ads photo' width={1000} height={1000} className='w-auto h-[20rem]' />)}
                 </div>
             </div>
-            <div className='mt-auto'>
-                {firstImages && (<Image src={firstImages} alt='ads photo' width={2000} height={2000} className='w-auto h-[20rem]' />)}
-            </div>
-        </div>
+        </section>
+
     )
 }
 
