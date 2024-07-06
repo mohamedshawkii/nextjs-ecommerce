@@ -55,7 +55,7 @@ const NewsLetter = () => {
     }, [])
     return (
         <section>
-            <div className='flex flex-row justify-center items-center gap-16 w-auto h-auto bg-[#E2E4E3] px-[2.5rem] py-[2rem]'>
+            <div className='flex flex-row justify-center items-center gap-16 w-auto h-auto bg-[#E2E4E3] px-[2.5rem] pt-[4rem]'>
                 <div className='Xsm:max-Afterxl:hidden'>
                     {secondImages && (<Image src={secondImages} alt='ads photo' width={1000} height={1000} className='w-auto h-[20rem] rotate-[-26deg]' />)}
                 </div>
