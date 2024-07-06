@@ -13,7 +13,7 @@ const MOreFeature = () => {
             sm:max-Afterxl:grid-cols-2
             Xsm:max-sm:flex-col
             Xsm:max-lg:px-[2.5rem]
-            h-auto w-auto px-[10rem] py-8
+            h-auto w-auto px-[10rem] py-16
             flex flex-row justify-between items-center gap-8 
             '>
                 <div className='sm:max-Afterxl:ml-auto bg-[#F3F5F7] flex flex-col justify-center items-start w-[16.7rem] h-[14rem] '>

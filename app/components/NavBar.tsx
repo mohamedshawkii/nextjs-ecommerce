@@ -1,7 +1,7 @@
 "use client"
 
 import { CiMenuFries, CiMenuBurger } from "react-icons/ci";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import UserIcon from '../../public/svgs/UserIcon'
 import ShopingBag from '../../public/svgs/ShopingBag'
@@ -15,6 +15,7 @@ import SideTableCart from "./SideTableCart";
 import { useShoppingCart } from "../context/ShoppingCartContext";
 import { usePathname } from "next/navigation";
 import { GrClose } from "react-icons/gr";
+import { easeInOut, motion, useMotionValueEvent, useScroll } from 'framer-motion'
 
 function NavBar() {
   const NavLinks = [
@@ -34,7 +35,8 @@ function NavBar() {
   const [userProfile, setuserProfile] = useState<string>('');
   const [openCart, setOpenCart] = useState(false);
   const [closeOffer, setCloseOffer] = useState(false)
-
+  const [show, setShow] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
   const currentPath = usePathname();
   const { cartQuantity } = useShoppingCart();
 
@@ -58,20 +60,37 @@ function NavBar() {
     }
   }, [showLogin, openCart]);
 
+  function handleNavDisplay() {
+    if (window.scrollY > lastScrollY) {
+      setShow(false);
+    } else {
+      setShow(true);
+    }
+    setLastScrollY(window.scrollY);
+  }
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleNavDisplay)
+    return () => { window.addEventListener('scroll', handleNavDisplay) }
+  }, [lastScrollY])
+
   return (
-    <nav
+    <motion.nav
+      variants={{ visible: { translateY: '0rem', }, hidden: { translateY: '-8rem', } }}
+      animate={show ? 'visible' : 'hidden'}
+      transition={{ duration: 1, ease: easeInOut, type: "tween", stiffness: 100 }}
       className="
-      z-[49]
-      fixed
-      w-full
-      sm:max-md:gap-1
-      bg-transparent"
-    >
+    bg-[#FEFEFE]
+    z-[49]
+    fixed
+    w-full
+    sm:max-md:gap-1
+  ">
       <div className={`
-        flex flex-row justify-center 
-        items-center w-full h-[2.7rem]
-         text-[#FEFEFE] 
-         bg-[#141718] ${closeOffer ? 'Xsm:hidden' : ''}`}
+  flex flex-row justify-center 
+  items-center w-full h-[2.7rem]
+    text-[#FEFEFE] 
+    bg-[#141718] ${closeOffer ? 'Xsm:hidden' : ''}`}
       >
         <div className="Xsm:max-sm:ml-0 ml-auto flex flex-row gap-3 items-center">
           <Copoun />
@@ -89,12 +108,12 @@ function NavBar() {
       </div>
 
       <div className="
-      Xsm:max-Beforexl:px-[2.5rem]
-      py-4
-      px-[10rem]
-      flex flex-row 
-      justify-between
-      items-center"
+Xsm:max-Beforexl:px-[2.5rem]
+py-4
+px-[10rem]
+flex flex-row 
+justify-between
+items-center"
       >
         <div className="sm:flex-row-reverse flex flex-row justify-end items-center">
           <div className="sm:hidden relative flex flex-col justify-between items-end">
@@ -115,30 +134,30 @@ function NavBar() {
               {isCollapsed ? (
                 <nav
                   className="
-                p-8
-                scale-up-center
-                flex
-                flex-col
-                rounded-xl
-                gap-1
-                justify-center
-                items-center
-                sm:hidden 
-                bg-[#FEFEFE]"
+          p-8
+          scale-up-center
+          flex
+          flex-col
+          rounded-xl
+          gap-1
+          justify-center
+          items-center
+          sm:hidden 
+          bg-[#FEFEFE]"
                 >
                   {NavLinks.map((item, index) => (
                     <Link
                       key={index}
                       href={item.href}
                       className={`
-                      text-[#6C7275]
-                      hover:text-[#000000]
-                        rounded-md 
-                        font-medium 
-                        w-full
-                        h-full
-                        py-3 px-7
-                        ${item.name === isActive
+                text-[#6C7275]
+                hover:text-[#000000]
+                  rounded-md 
+                  font-medium 
+                  w-full
+                  h-full
+                  py-3 px-7
+                  ${item.name === isActive
                           ? "text-[#000000]"
                           : ""
                         }`}
@@ -163,23 +182,23 @@ function NavBar() {
             <div
               key={index}
               className="
-              flex-row
-              gap-5
-              justify-end
-              items-end
-              xtsm:max-sm:hidden
-              align-middle
-              text-center"
+        flex-row
+        gap-5
+        justify-end
+        items-end
+        xtsm:max-sm:hidden
+        align-middle
+        text-center"
             >
               <Link href={item.href}>
                 <button
                   onClick={() => setIsActive(item.name)}
                   className={`
-                    rounded-md
-                    text-base
-                    font-medium
-                    py-2 px-6
-                  ${item.href === currentPath
+              rounded-md
+              text-base
+              font-medium
+              py-2 px-6
+            ${item.href === currentPath
                       ? "text-[#000000]"
                       : "text-[#6C7275]"
                     }
@@ -221,7 +240,7 @@ function NavBar() {
 
         </div>
       </div>
-    </nav>
+    </motion.nav>
   );
 }
 

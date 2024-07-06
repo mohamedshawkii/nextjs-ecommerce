@@ -11,25 +11,135 @@ const ShopPage = () => {
   const [productsData, setProductsData] = useState<ProductInterFace | null>(null);
 
   useEffect(() => {
-    const query = `*[_type == "products"][]{
-      _id,
-      price,
-      name,
-      details,
-      "slug": slug.current,
-      "imageUrl": image[0].asset->url,
-      price_id,
-      }`
-    client.fetch(query).then(
-      (res) => {
-        setProductsData(res);
-        // console.log(res);
+    async function fetchProducts (){
+      try {
+        const query = `*[_type == "products"][]{
+          _id,
+          price,
+          name,
+          details,
+          "slug": slug.current,
+          "imageUrl": image[0].asset->url,
+          price_id,
+          }`
+        await client.fetch(query).then(
+          (res) => {
+            setProductsData(res);
+            // console.log(res);
+          }
+        )
+      } catch (error) {
+        console.log(error)
       }
-    )
+    }
+    fetchProducts ()
   }, [])
 
-  function allPrices() {
-    const query = `*[_type == "products"][]{
+  async function allPrices() {
+    try {
+      const query = `*[_type == "products"][]{
+        _id,
+        price,
+        name,
+        details,
+        "slug": slug.current,
+        "imageUrl": image[0].asset->url,
+        price_id,
+        }`
+      await client.fetch(query).then(
+        (res) => {
+          setProductsData(res);
+          // console.log(res);
+        }
+      )
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  async function zeroToHundred() {
+    try {
+      const query = `*[_type == "products"][]{
+        _id,
+        price,
+        name,
+        details,
+        "slug": slug.current,
+        "imageUrl": image[0].asset->url,
+        price_id,
+        }`
+      await client.fetch(query).then(
+        (res) => {
+          if (res) {
+            const zeroToHundredRange = res.filter(
+              (res: { price: number; }) => res?.price < 100);
+            // console.log(byPrice);
+            setProductsData(zeroToHundredRange);
+          }
+        }
+      )
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  async function hundredToTwoHundred() {
+    try {
+      const query = `*[_type == "products"][]{
+        _id,
+        price,
+        name,
+        details,
+        "slug": slug.current,
+        "imageUrl": image[0].asset->url,
+        price_id,
+        }`
+      await client.fetch(query).then(
+        (res) => {
+          if (res) {
+            const hundredToTwoHundredRange = res.filter(
+              (res: { price: number; }) => res?.price < 199.99 && res?.price > 100);
+            // console.log(byPrice);
+            setProductsData(hundredToTwoHundredRange);
+          }
+        }
+      )
+    } catch (error) {
+      console.log(error)
+    }
+
+  }
+
+  async function twoHundredTothreeHundred() {
+    try {
+      const query = `*[_type == "products"][]{
+        _id,
+        price,
+        name,
+        details,
+        "slug": slug.current,
+        "imageUrl": image[0].asset->url,
+        price_id,
+        }`
+      await client.fetch(query).then(
+        (res) => {
+          if (res) {
+            const twoHundredTothreeHundredRange = res.filter(
+              (res: { price: number; }) => res?.price < 299.9 && res?.price > 200);
+            // console.log(byPrice);
+            setProductsData(twoHundredTothreeHundredRange);
+          }
+        }
+      )
+    } catch (error) {
+      console.log(error)
+    }
+
+  }
+
+  async function overthreeHundred() {
+    try {
+      const query = `*[_type == "products"][]{
       _id,
       price,
       name,
@@ -38,188 +148,128 @@ const ShopPage = () => {
       "imageUrl": image[0].asset->url,
       price_id,
       }`
-    client.fetch(query).then(
-      (res) => {
-        setProductsData(res);
-        // console.log(res);
-      }
-    )
+      await client.fetch(query).then(
+        (res) => {
+          if (res) {
+            const overthreeHundredRange = res.filter(
+              (res: { price: number; }) => res?.price > 300.00
+            );
+            // console.log(byPrice);
+            setProductsData(overthreeHundredRange);
+          }
+        }
+      )
+    } catch (error) {
+      console.log(error)
+    }
   }
 
-  function zeroToHundred() {
-    const query = `*[_type == "products"][]{
-      _id,
-      price,
-      name,
-      details,
-      "slug": slug.current,
-      "imageUrl": image[0].asset->url,
-      price_id,
-      }`
-    client.fetch(query).then(
-      (res) => {
-        if (res) {
-          const zeroToHundredRange = res.filter(
-            (res: { price: number; }) => res?.price < 100);
-          // console.log(byPrice);
-          setProductsData(zeroToHundredRange);
+  async function wirelessCategory() {
+    try {
+      const query = `*[_type == "products"][]{
+        _id,
+        price,
+        name,
+        details,
+        "slug": slug.current,
+        "imageUrl": image[0].asset->url,
+        price_id,
+        category
+        }`
+      await client.fetch(query).then(
+        (res) => {
+          if (res) {
+            const wirelessCategoryRange = res.filter(
+              (item: { category: string }) => item?.category.includes("Wireless"));
+            // console.log(wirelessCategoryRange);
+            setProductsData(wirelessCategoryRange);
+          }
         }
-      }
-    )
+      )
+    } catch (error) {
+      console.log(error)
+    }
+
   }
 
-  function hundredToTwoHundred() {
-    const query = `*[_type == "products"][]{
-      _id,
-      price,
-      name,
-      details,
-      "slug": slug.current,
-      "imageUrl": image[0].asset->url,
-      price_id,
-      }`
-    client.fetch(query).then(
-      (res) => {
-        if (res) {
-          const hundredToTwoHundredRange = res.filter(
-            (res: { price: number; }) => res?.price < 199.99 && res?.price > 100);
-          // console.log(byPrice);
-          setProductsData(hundredToTwoHundredRange);
+  async function earbudsCategory() {
+    try {
+      const query = `*[_type == "products"][]{
+        _id,
+       price,
+       name,
+       details,
+       "slug": slug.current,
+       "imageUrl": image[0].asset->url,
+       price_id,
+       category
+       }`
+      await client.fetch(query).then(
+        (res) => {
+          if (res) {
+            const earbudsCategoryRange = res.filter(
+              (res: { category: string; }) => res?.category === 'Earbuds');
+            // console.log(earbudsCategoryRange);
+            setProductsData(earbudsCategoryRange);
+          }
         }
-      }
-    )
+      )
+    } catch (error) {
+      console.log(error)
+    }
+
   }
 
-  function twoHundredTothreeHundred() {
-    const query = `*[_type == "products"][]{
-      _id,
-      price,
-      name,
-      details,
-      "slug": slug.current,
-      "imageUrl": image[0].asset->url,
-      price_id,
-      }`
-    client.fetch(query).then(
-      (res) => {
-        if (res) {
-          const twoHundredTothreeHundredRange = res.filter(
-            (res: { price: number; }) => res?.price < 299.9 && res?.price > 200);
-          // console.log(byPrice);
-          setProductsData(twoHundredTothreeHundredRange);
+  async function headphoneCategory() {
+    try {
+      const query = `*[_type == "products"][]{
+        _id,
+       price,
+       name,
+       details,
+       "slug": slug.current,
+       "imageUrl": image[0].asset->url,
+       price_id,
+       category
+ 
+       }`
+      await client.fetch(query).then(
+        (res) => {
+          if (res) {
+            const headphoneCategoryRange = res.filter(
+              (res: { category: string; }) => res?.category === 'Headphone');
+            // console.log(headphoneCategoryRange);
+            setProductsData(headphoneCategoryRange);
+          }
         }
-      }
-    )
-  }
-
-  function overthreeHundred() {
-    const query = `*[_type == "products"][]{
-      _id,
-      price,
-      name,
-      details,
-      "slug": slug.current,
-      "imageUrl": image[0].asset->url,
-      price_id,
-      }`
-    client.fetch(query).then(
-      (res) => {
-        if (res) {
-          const overthreeHundredRange = res.filter(
-            (res: { price: number; }) => res?.price > 300.00
-          );
-          // console.log(byPrice);
-          setProductsData(overthreeHundredRange);
-        }
-      }
-    )
-  }
-
-  function wirelessCategory() {
-    const query = `*[_type == "products"][]{
-      _id,
-      price,
-      name,
-      details,
-      "slug": slug.current,
-      "imageUrl": image[0].asset->url,
-      price_id,
-      category
-      }`
-    client.fetch(query).then(
-      (res) => {
-        if (res) {
-          const wirelessCategoryRange = res.filter(
-            (item: { category: string }) => item?.category.includes("Wireless"));
-          // console.log(wirelessCategoryRange);
-          setProductsData(wirelessCategoryRange);
-        }
-      }
-    )
-  }
-
-  function earbudsCategory() {
-    const query = `*[_type == "products"][]{
-       _id,
-      price,
-      name,
-      details,
-      "slug": slug.current,
-      "imageUrl": image[0].asset->url,
-      price_id,
-      category
-      }`
-    client.fetch(query).then(
-      (res) => {
-        if (res) {
-          const earbudsCategoryRange = res.filter(
-            (res: { category: string; }) => res?.category === 'Earbuds');
-          // console.log(earbudsCategoryRange);
-          setProductsData(earbudsCategoryRange);
-        }
-      }
-    )
-  }
-
-  function headphoneCategory() {
-    const query = `*[_type == "products"][]{
-       _id,
-      price,
-      name,
-      details,
-      "slug": slug.current,
-      "imageUrl": image[0].asset->url,
-      price_id,
-      category
-
-      }`
-    client.fetch(query).then(
-      (res) => {
-        if (res) {
-          const headphoneCategoryRange = res.filter(
-            (res: { category: string; }) => res?.category === 'Headphone');
-          // console.log(headphoneCategoryRange);
-          setProductsData(headphoneCategoryRange);
-        }
-      }
-    )
+      )
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   return (
-    <div className='px-[10rem] w-full h-auto' >
+    <div className='Xsm:max-Beforexl:px-[2.5rem] px-[10rem] w-full h-auto' >
       <div className=' h-[24.5rem]'>
       </div>
       <div className='flex flex-row justify-start items-start w-full font-bold text-xl'>
-        <div className=" flex flex-row justify-center items-center mb-[2rem] gap-8">
+        <div className="Xsm:max-Beforexl:hidden flex flex-row justify-center items-center mb-[2rem] gap-8">
           <LuSettings2 size={27} />
           Filter
         </div>
-        <div className=' ml-[12rem]'>
+        <div className='Xsm:max-Beforexl:m-0  ml-[12rem]'>
           <h2>Our Products</h2>
         </div>
       </div>
-      <div className='flex flex-row w-full h-auto pb-[4rem]  '>
-        <div className='pr-[2rem]'>
+      <div className='Xsm:max-Beforexl:flex-col flex flex-row w-full h-auto pb-[4rem]'>
+        <div className='
+          Xsm:max-Beforexl:flex
+          Xsm:max-Beforexl:flex-row
+          Xsm:max-Beforexl:items-center 
+          Xsm:max-Beforexl:justify-center
+          
+          Xsm:max-Beforexl:py-[2rem]
+          Beforexl:pr-[2rem]'>
           <SideBare
             allPrices={allPrices}
             overthreeHundred={overthreeHundred}
