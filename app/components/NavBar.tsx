@@ -202,7 +202,7 @@ items-center"
                       ? "text-[#000000]"
                       : "text-[#6C7275]"
                     }
-            `}
+                  `}
                 >
                   {item.name}
                 </button>
