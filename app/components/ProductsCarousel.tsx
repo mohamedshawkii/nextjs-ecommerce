@@ -42,7 +42,7 @@ function ProductsCarousel() {
         <div>
           <Swiper
             slidesPerView={1}
-            spaceBetween={30}
+            spaceBetween={0}
             freeMode={true}
             pagination={{
               clickable: true,
@@ -51,23 +51,18 @@ function ProductsCarousel() {
             breakpoints={{
               320: {
                 slidesPerView: 1,
-                spaceBetween: 20,
               },
-              640: {
+              600: {
                 slidesPerView: 2,
-                spaceBetween: 20,
               },
-              1024: {
+              900: {
                 slidesPerView: 3,
-                spaceBetween: 40,
               },
               1440: {
                 slidesPerView: 4,
-                spaceBetween: 50,
               },
               1700: {
                 slidesPerView: 5,
-                spaceBetween: 50,
               },
             }}
             className="h-[30rem]"

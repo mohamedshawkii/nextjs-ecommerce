@@ -1,7 +1,6 @@
 "use client"
 
-import React, { useState } from "react";
-import { LuSettings2 } from "react-icons/lu";
+import React from "react";
 
 function SideBare({ allPrices,
     overthreeHundred,
@@ -12,11 +11,9 @@ function SideBare({ allPrices,
     earbudsCategory,
     headphoneCategory }: any) {
     return (
-        <aside>
-            <div className=" w-[16.5rem] h-[31rem] overflow-scroll overflow-x-hidden bg-transparent text-lg text-[#000000] ">
+        <aside className="Xsm:max-Beforexl:w-full">
+            <div className="Xsm:max-Beforexl:w-[15rem] w-[16.5rem] h-[31rem] overflow-scroll overflow-x-hidden bg-transparent text-lg text-[#000000]">
                 <div className="flex flex-col justify-start items-start gap-6  w-full h-auto ">
-                   
-                    
                     <h2 className="font-bold">CATEGORIES</h2>
                     <button className="hover:font-bold" onClick={wirelessCategory}>Wireless</button>
                     <button className="hover:font-bold" onClick={earbudsCategory}>Earbuds</button>
