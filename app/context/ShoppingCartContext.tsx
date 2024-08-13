@@ -36,9 +36,10 @@ export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
     function getTotalPrice(total: number) {
         setTotal(total)
     }
-    const cartQuantity = cartItems.reduce(
-        (quantity, item) => item.quantity + quantity, 0
-    )
+
+    const cartQuantity = cartItems.reduce((quantity, item) => item.quantity + quantity, 0)
+
+
     function getItemQuantity(id: number) {
         return cartItems.find(item => item.id === id)?.quantity || 0
     }

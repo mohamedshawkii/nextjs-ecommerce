@@ -19,8 +19,7 @@ export default async function CheckOut({searchParams}:{searchParams: any}) {
     }
 
     return (
-        <div className='h-auto py-16'>
-            <div className='h-[8rem]'></div>
+        <div className='h-full w-full flex flex-col justify-center p-2'>
             <CheckoutForm clientSecret={paymentIntent.client_secret} checkOutTotal={checkOutTotal} />
         </div>
     );
