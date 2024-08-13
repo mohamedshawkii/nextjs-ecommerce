@@ -78,6 +78,7 @@ function Form({ totalPrice }: { totalPrice: number }) {
 
     return (
         <form className="flex flex-col Xsm:max-lg:items-center items-start gap-7 w-full" onSubmit={handleSubmit}>
+
             <h1 className="font-bold text-2xl">Checkout</h1>
             {errorMessage && (
                 <div>
@@ -89,6 +90,7 @@ function Form({ totalPrice }: { totalPrice: number }) {
                 type='submit'
                 className='text-pretty w-[13rem] h-[4rem] font-semibold text-lg bg-[#141718] text-[#FEFEFE] rounded-2xl
                 hover:bg-transparent hover:text-[#141718] border-[2px]border-[#141718]'
+
                 disabled={stripe == null || elements == null || isLoading}
             >
                 {isLoading ? "Purchasing..." : `Purchase ${totalPrice}`}
