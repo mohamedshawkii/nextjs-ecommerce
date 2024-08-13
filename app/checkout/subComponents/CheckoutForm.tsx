@@ -24,8 +24,13 @@ export function CheckoutForm({ clientSecret, checkOutTotal }: CheckoutFormProps)
     const { cartItems, } = useShoppingCart();
 
     return (
-        <div className="max-w-5xl w-full mx-auto space-y-8">
-            <div className="w-full h-auto grid grid-cols-4 justify-center items-center gap-8 py-8">
+        <div className="max-w-5xl w-full h-full mx-auto 
+            py-8 pt-[6rem]">
+            <div className="w-full h-auto grid grid-cols-4 grid-flow-row-dense justify-center items-center gap-7 py-7 px-4
+            Xsm:max-lg::grid-flow-row-dense
+            Xsm:max-lg:grid-cols-none
+            Xsm:max-lg:gap-8
+            ">
                 {cartItems &&
                     (
                         cartItems.map((item, index) =>
@@ -72,18 +77,20 @@ function Form({ totalPrice }: { totalPrice: number }) {
     }
 
     return (
-        <form className="flex flex-col Xsm:max-xl:items-center items-start gap-4" onSubmit={handleSubmit}>
+        <form className="flex flex-col Xsm:max-lg:items-center items-start gap-7 w-full" onSubmit={handleSubmit}>
+
             <h1 className="font-bold text-2xl">Checkout</h1>
             {errorMessage && (
                 <div>
                     {errorMessage}
                 </div>
             )}
-            <PaymentElement />
+            <PaymentElement className="w-full Xsm:max-lg:w-3/4" />
             <button
                 type='submit'
                 className='text-pretty w-[13rem] h-[4rem] font-semibold text-lg bg-[#141718] text-[#FEFEFE] rounded-2xl
-                    hover:bg-transparent hover:text-[#141718] border-[2px] border-[#141718]'
+                hover:bg-transparent hover:text-[#141718] border-[2px]border-[#141718]'
+
                 disabled={stripe == null || elements == null || isLoading}
             >
                 {isLoading ? "Purchasing..." : `Purchase ${totalPrice}`}

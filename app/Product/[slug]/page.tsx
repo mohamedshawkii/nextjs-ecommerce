@@ -35,22 +35,22 @@ export default function ProductPage({ params, }: { params: { slug: string } }) {
 
   return (
     <div className='
-      py-[14rem]
-      px-[10rem]
-      flex flex-row 
-      justify-start
-      items-start w-auto h-auto'>
-      <div>
+      flex flex-row
+      justify-center
+      items-start'>
         {productBySlug && (
           <div className='
+            py-[14rem]
             gap-8
             flex flex-row 
+            Xsm:max-xl:flex-col
+            Xsm:max-xl:items-center
             justify-start
             items-start w-auto h-auto'
           >
-            <div className='w-2/4 h-[40rem] bg-[#F3F5F7] flex flex-col justify-center items-center'>
+            <div className='w-3/4 h-[20rem] bg-[#F3F5F7] flex flex-col justify-center'>
               <Image
-                className='w-auto h-[30rem] object-contain object-center'
+                className='w-auto h-[15rem] object-contain object-center'
                 src={productBySlug[0].imageUrl} alt="product image"
                 width={800}
                 height={800}
@@ -58,7 +58,7 @@ export default function ProductPage({ params, }: { params: { slug: string } }) {
             </div>
             <div className='
               pt-[2rem]
-              w-2/4
+              w-3/4
               gap-4
               flex flex-col 
               justify-start
@@ -99,7 +99,6 @@ export default function ProductPage({ params, }: { params: { slug: string } }) {
             </div>
           </div>
         )}
-      </div>
     </div>
   )
 }
