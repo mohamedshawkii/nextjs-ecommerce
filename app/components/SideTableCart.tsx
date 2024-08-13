@@ -6,6 +6,8 @@ import CTA from './CTA';
 import Link from 'next/link';
 import client from '@/lib/client';
 import { simplifiedProduct } from '../interface';
+import { IoCloseCircleSharp } from 'react-icons/io5';
+import { usePathname } from 'next/navigation';
 
 type Myfunctions = {
     handleOpenCart: () => void,
@@ -16,8 +18,8 @@ function SideTableCart({ handleOpenCart }: Myfunctions) {
     const [total, setTotal] = useState<number>(0);
     const { cartItems, getTotalPrice, } = useShoppingCart();
     const [emptyCheckOut, setEmptyCheckOut] = useState<boolean>(true);
-    
-    // console.log('ids', cartItems);
+    const currPath = usePathname()
+
 
     useEffect(() => {
         if (total) {
@@ -65,20 +67,37 @@ function SideTableCart({ handleOpenCart }: Myfunctions) {
         }
     }
 
+    useEffect(() => {
+        if (`/checkout` === currPath) {
+            handleOpenCart()
+        }
+    }, [currPath])
+
+
     return (
         <aside>
             <div
                 id='wrapper'
                 className='
-                    backdrop-filter backdrop-brightness-75 
-                    backdrop-blur-md z-[51] fixed top-0 right-0 w-screen h-svh'
+                    backdrop-filter backdrop-brightness-75
+                    backdrop-blur-md z-[51] fixed top-0 right-0 w-screen h-svh
+
+                    Xsm:max-xl:overflow-auto'
                 onClick={handleClickedWrapper}
             >
-                <div className='h-svh bg-[#FEFEFE] w-[26rem] py-[2.5rem] px-[1.5rem]'>
-                    <div className='h-[4rem] font-semibold text-3xl'>
-                        <p>Cart</p>
+                <div className='h-full bg-[#FEFEFE] w-[26rem] py-[2.5rem] px-[1.5rem]
+                 Xsm:max-xl:w-full Xsm:max-xl:h-full
+                '>
+                    <div className='h-[4rem] font-semibold text-3xl flex flex-row justify-start gap-2'>
+                        <p className='my-auto'>Cart</p>
+                        <button
+                            className="flex flex-row justify-center items-center gap-2 ml-auto"
+                            onClick={handleOpenCart}
+                        >
+                            <span className="font-bold text-lg">Close</span><IoCloseCircleSharp size={27} />
+                        </button>
                     </div>
-                    <div className='h-3/4 w-full overflow-y-scroll flex flex-col gap-4'>
+                    <div className='h-2/4 w-full overflow-y-scroll flex flex-col gap-4'>
                         {cartItems &&
                             (
                                 cartItems.map((item, index) => <CartItem
@@ -90,16 +109,15 @@ function SideTableCart({ handleOpenCart }: Myfunctions) {
                             )
                         }
                     </div>
-                    <div className='h-[11rem] w-full flex flex-col justify-center items-start'>
-                        <p>total: {total}</p>
-                        <hr />
-                        <div>{emptyCheckOut && (<div>the cart is empty</div>)}</div>
-                        <div onClick={() => getTotalPrice(total)}>
+                    <div className=' w-full flex flex-col items-start text-lg font-semibold'>
+                        <p className='py-4'>total: {total}</p>
+                        <hr className='border-[1px] border-[#141718] w-full ' />
+                        <div className='py-4'>{emptyCheckOut && (<div>the cart is empty</div>)}</div>
+                        <div className='py-4' onClick={() => getTotalPrice(total)}>
                             <Link href={`${total ? `/checkout?total=${total}` : `/Shop`}`}>
                                 <CTA title={'Checkout'} />
                             </Link>
                         </div>
-
                     </div>
                 </div>
             </div>

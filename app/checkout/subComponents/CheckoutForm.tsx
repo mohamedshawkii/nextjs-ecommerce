@@ -37,7 +37,6 @@ export function CheckoutForm({ clientSecret, checkOutTotal }: CheckoutFormProps)
                     )
                 }
             </div>
-
             <Elements options={{ clientSecret }} stripe={stripePromise}>
                 <Form totalPrice={checkOutTotal} />
             </Elements>
@@ -73,8 +72,8 @@ function Form({ totalPrice }: { totalPrice: number }) {
     }
 
     return (
-        <form onSubmit={handleSubmit}>
-            <div>Checkout</div>
+        <form className="flex flex-col Xsm:max-xl:items-center items-start gap-4" onSubmit={handleSubmit}>
+            <h1 className="font-bold text-2xl">Checkout</h1>
             {errorMessage && (
                 <div>
                     {errorMessage}
@@ -83,7 +82,7 @@ function Form({ totalPrice }: { totalPrice: number }) {
             <PaymentElement />
             <button
                 type='submit'
-                className=' text-pretty w-[13rem] h-[4rem] font-semibold text-lg bg-[#141718] text-[#FEFEFE] rounded-2xl
+                className='text-pretty w-[13rem] h-[4rem] font-semibold text-lg bg-[#141718] text-[#FEFEFE] rounded-2xl
                     hover:bg-transparent hover:text-[#141718] border-[2px] border-[#141718]'
                 disabled={stripe == null || elements == null || isLoading}
             >
