@@ -5,8 +5,8 @@ import Stripe from 'stripe';
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string)
 
-export default async function CheckOut({searchParams}:{searchParams: any}) {
-    
+export default async function CheckOut({ searchParams }: { searchParams: any }) {
+
     const checkOutTotal = searchParams.total as number;
 
     const paymentIntent = await stripe.paymentIntents.create({
@@ -19,7 +19,7 @@ export default async function CheckOut({searchParams}:{searchParams: any}) {
     }
 
     return (
-        <div className='h-full w-full flex flex-col justify-center p-2'>
+        <div className='h-auto w-full flex flex-col justify-center'>
             <CheckoutForm clientSecret={paymentIntent.client_secret} checkOutTotal={checkOutTotal} />
         </div>
     );

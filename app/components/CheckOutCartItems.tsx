@@ -30,9 +30,9 @@ function CheckOutCartItems({ keyId, quantity }: { keyId: string | number, quanti
     }, [keyId])
 
     return (
-        <div>
-            {product && product.map((item,_index) =>
-                <div key={_index} className='h-[6rem] flex flex-row gap-4 justify-start items-start'>
+        <>
+            {product && product.map((item, _index) =>
+                <div key={_index} className='h-[6rem] flex flex-row gap-4 items-start'>
                     <div className='w-auto h-full'>
                         <div className='h-[6rem] w-[5rem] bg-[#F3F5F7] flex'>
                             <Image
@@ -44,8 +44,7 @@ function CheckOutCartItems({ keyId, quantity }: { keyId: string | number, quanti
                             />
                         </div>
                     </div>
-
-                    <div className='flex flex-col justify-start items-start w-4/6 h-full text-pretty'>
+                    <div className='flex flex-col items-start w-4/6 h-full text-pretty'>
                         <div className='text-wrap text-lg line-clamp-2 font-bold'>{item.name}</div>
                         <div><span className=' font-semibold'>quantity:</span> {quantity}</div>
                         <div><span className=' font-semibold'>price:</span> {item.price}</div>
@@ -53,7 +52,7 @@ function CheckOutCartItems({ keyId, quantity }: { keyId: string | number, quanti
                     </div>
                 </div>
             )}
-        </div>
+        </>
     )
 }
 
